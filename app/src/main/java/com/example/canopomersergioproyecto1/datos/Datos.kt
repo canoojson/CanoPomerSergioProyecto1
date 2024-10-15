@@ -1,12 +1,20 @@
 package com.example.canopomersergioproyecto1.datos
 
-import com.example.canopomersergioproyecto1.R
+import com.example.canopomersergioproyecto1.modelo.Moto
+import com.example.canopomersergioproyecto1.modelo.Patinete
 import com.example.canopomersergioproyecto1.modelo.Pedido
+import com.example.canopomersergioproyecto1.modelo.Turismo
+import com.example.canopomersergioproyecto1.modelo.Usuario
 
 class Datos {
+    val usuario = Usuario("Sergio", "Cano","Pomer", "loremipsum@lorem.com", "+34 000111222")
+    val moto = Moto(250, true)
+    val turismo = Turismo("Gasolina", true)
+    val patinete = Patinete(true)
     fun cargarpedidos(): List<Pedido> = listOf(
-        Pedido(R.string.moto,R.drawable.moto),
-        Pedido(R.string.coche_de_turismo,R.drawable.coche_de_turismo),
-        Pedido(R.string.scooter_electrico,R.drawable.scooter_electrico)
+        Pedido(moto, usuario, 2),
+        Pedido(turismo, usuario, 1),
+        Pedido(patinete, usuario, 3)
     )
+    fun obtenerUsuario(): Usuario = usuario
 }
