@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CanoPomerSergioProyecto1</string>
+    <string name="foto_de_perfil">Foto de perfil</string>
+    <string name="realizar_pedido">Realizar pedido</string>
+    <string name="listar_pedidos">Listar pedidos</string>
+    <string name="moto">Moto</string>
+    <string name="coche_de_turismo">Turismo</string>
+    <string name="scooter_electrico">Patinete</string>
+    <string name="imagen_del_vehiculo">Imagen del vehiculo</string>
+</resources>
