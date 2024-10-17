@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.canopomersergioproyecto1.datos.Datos
@@ -66,6 +67,7 @@ fun ListaPedidos(lista: List<Pedido>, modifier: Modifier = Modifier){
         }
     }
 }
+@Preview(showBackground = true)
 @Composable
 fun ListarPedidos(modifier: Modifier = Modifier){
     Column(modifier = Modifier
@@ -75,7 +77,8 @@ fun ListarPedidos(modifier: Modifier = Modifier){
         verticalArrangement = Arrangement.Top) {
         Text("Pedidos",
             fontSize = 30.sp,
-            modifier = Modifier.padding(bottom = 10.dp))
+            modifier = Modifier.padding(bottom = 10.dp,
+                top = 15.dp))
         ListaPedidos(
             lista = Datos().cargarpedidos(),
             modifier = modifier

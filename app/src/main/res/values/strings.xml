@@ -7,4 +7,14 @@
     <string name="coche_de_turismo">Turismo</string>
     <string name="scooter_electrico">Patinete</string>
     <string name="imagen_del_vehiculo">Imagen del vehiculo</string>
+    <string name="vehiculo">Vehiculo</string>
+    <string name="di_sel">Diésel</string>
+    <string name="gasolina">Gasolina</string>
+    <string name="el_ctrico">Eléctrico</string>
+    <string name="_50cc">50cc</string>
+    <string name="_125cc">125cc</string>
+    <string name="_250cc">250cc</string>
+    <string name="combustible">Combustible</string>
+    <string name="cilindrada">Cilindrada</string>
+    <string name="gps">GPS</string>
 </resources>

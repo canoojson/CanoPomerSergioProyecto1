@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }*/
                 ) { innerPadding ->
-                    PantallaInicio(modifier = Modifier.padding(innerPadding))
+                    RealizarPedido(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -71,7 +71,7 @@ Column(modifier = Modifier
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Center) {
         Image(
-            painter = painterResource(id=R.drawable.fotoperfil),
+            painter = painterResource(id=Datos().obtenerUsuario().fotoPerfil),
             contentDescription = stringResource(R.string.foto_de_perfil),
             modifier = Modifier.size(100.dp),
         )
@@ -97,6 +97,6 @@ Column(modifier = Modifier
 @Composable
 fun GreetingPreview() {
     CanoPomerSergioProyecto1Theme {
-        ListarPedidos()
+        RealizarPedido()
     }
 }
