@@ -17,4 +17,5 @@
     <string name="combustible">Combustible</string>
     <string name="cilindrada">Cilindrada</string>
     <string name="gps">GPS</string>
+    <string name="resumen_del_pedido">Resumen del pedido</string>
 </resources>

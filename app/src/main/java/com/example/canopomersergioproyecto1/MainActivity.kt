@@ -84,9 +84,11 @@ Column(modifier = Modifier
                     + " \n" + Datos().obtenerUsuario().telefono
         )
         Spacer(modifier = Modifier.height(200.dp))
+    //Manda a la actividad RealizarPedido
         Button(onClick = {/*TODO*/}) {
             Text(stringResource(R.string.realizar_pedido))
         }
+    //Manda a la actividad ListarPedidos
         Button(onClick = {/*TODO*/}) {
             Text(stringResource(R.string.listar_pedidos))
         }

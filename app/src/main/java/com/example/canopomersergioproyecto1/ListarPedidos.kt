@@ -57,6 +57,7 @@ fun ItemPedido(pedido: Pedido, onItemClick: (Pedido) -> Unit){
 @Composable
 fun ListaPedidos(lista: List<Pedido>, modifier: Modifier = Modifier){
     LazyColumn(modifier = modifier) {
+        //Mandara a una pantalla en la que se mostraran los detalles del pedido
         items(lista) { pedido ->
             ItemPedido(
                 pedido = pedido,

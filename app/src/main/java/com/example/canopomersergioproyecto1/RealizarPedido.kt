@@ -160,10 +160,12 @@ fun RealizarPedido(modifier: Modifier = Modifier){
                 fontSize = 20.sp)
         }
         Row(modifier = Modifier.padding(top = 20.dp)) {
+            //Manda a la actividad ResumenPedido
             Button(onClick = {/*TODO*/},
                 modifier = Modifier) {
                 Text(text = "Aceptar")
             }
+            //Manda a la pantalla de inicio de la aplicacion
             Button(onClick = {/*TODO*/},
                 modifier = Modifier.padding(start = 20.dp)) {
                 Text(text = "Cancelar")
