@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CanoPomerSergioProyecto1</string>
+    <string name="foto_de_perfil">Profile photo</string>
+    <string name="realizar_pedido">Place order</string>
+    <string name="listar_pedidos">List orders</string>
+    <string name="moto">Motorbike</string>
+    <string name="coche_de_turismo">Passenger car</string>
+    <string name="scooter_electrico">Electric scooter</string>
+    <string name="imagen_del_vehiculo">Vehicle image</string>
+    <string name="vehiculo">Vehicle</string>
+    <string name="di_sel">Diesel</string>
+    <string name="gasolina">Gasoline</string>
+    <string name="el_ctrico">Electric</string>
+    <string name="combustible">Fuel</string>
+    <string name="cilindrada">Engine capacity</string>
+    <string name="resumen_del_pedido">Order Summary</string>
+    <string name="volver">Return</string>
+    <string name="formulario_de_pago">Payment form</string>
+    <string name="metodos_de_pago">Payment methods</string>
+    <string name="aceptar">Accept</string>
+    <string name="cancelar">Cancel</string>
+    <string name="precio_total">Total price:</string>
+    <string name="resumen_de_pago">Payment summary</string>
+    <string name="dias_de_alquiler">Rental days:</string>
+    <string name="dia">day</string>
+    <string name="enviar">Send</string>
+    <string name="pagar">Pay</string>
+    <string name="pedidos">Orders</string>
+    <string name="fecha_de_caducidad">Expiration date</string>
+    <string name="numero_de_tarjeta">Card number</string>
+    <string name="abrir">Open</string>
+    <string name="cerrar">Close</string>
+</resources>

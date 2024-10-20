@@ -10,18 +10,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Turismo
 
-@Preview(showBackground = true)
 @Composable
-fun ResumenPedido(modifier: Modifier = Modifier){
+fun ResumenPedido(navController: NavController, modifier: Modifier = Modifier){
 
-    val pedido = Datos().listaPedidos.get(2)
+    val pedido = Datos().listaPedidos[Datos().listaPedidos.size - 1]
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -34,26 +33,30 @@ fun ResumenPedido(modifier: Modifier = Modifier){
         Text(stringResource(R.string.vehiculo) + ": " + stringResource(pedido.vehiculo.stringResId),
             fontSize = 20.sp)
         if(pedido.vehiculo.stringResId==R.string.coche_de_turismo){
-            Text("Combustible: " + (pedido.vehiculo as Turismo).combustible,
+            Text(
+                stringResource(R.string.combustible)+ ": " + (pedido.vehiculo as Turismo).combustible,
                 fontSize = 20.sp)
         }else if(pedido.vehiculo.stringResId==R.string.moto){
-            Text("Cilindrada: " + (pedido.vehiculo as Moto).cilindrada,
+            Text(
+                stringResource(R.string.cilindrada) + ": " + (pedido.vehiculo as Moto).cilindrada,
                 fontSize = 20.sp)
         }
         Text("GPS: " + if(pedido.Gps) "Sí" else "No",
             fontSize = 20.sp)
-        Text("Dias de alquiler: " + pedido.tiempoAlquiler,
+        Text(stringResource(R.string.dias_de_alquiler) + pedido.tiempoAlquiler,
             fontSize = 20.sp)
         Row(modifier = Modifier.padding(top = 20.dp)){
             //Manda a la actividad FormularioPago
-            Button(onClick = {/*TODO*/},
+            Button(onClick = {navController.navigate("formularioPago")},
                 modifier = Modifier) {
-                Text(text = "Pagar")
+                Text(text = stringResource(R.string.pagar),
+                    fontSize = 20.sp)
             }
             //Manda a la pantalla de RealizarPedido
-            Button(onClick = {/*TODO*/},
+            Button(onClick = {navController.navigate("realizarPedido")},
                 modifier = Modifier.padding(start = 20.dp)) {
-                Text(text = "Cancelar")
+                Text(text = stringResource(R.string.cancelar),
+                    fontSize = 20.sp)
             }
         }
 

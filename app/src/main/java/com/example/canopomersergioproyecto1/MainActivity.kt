@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -14,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,6 +23,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+
+import androidx.navigation.compose.rememberNavController
 import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.ui.theme.CanoPomerSergioProyecto1Theme
 
@@ -33,38 +39,29 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CanoPomerSergioProyecto1Theme {
-                Scaffold(/*
-                    topBar = {
-                        TopAppBar(
-                            colors = topAppBarColors(
-                                containerColor = Color.DarkGray,
-                                titleContentColor = Color.White
-                            ),
-                            title = {
-                                Text("")
-                            },
-                            actions = {
-                                IconButton(onClick = {/*TODO*/}) {
-                                    Text("Lorem Ipsum")
-                                    Icon(
-                                        imageVector = R.drawable.fotoperfil
-
-                                    )
-                                }
-                            }
-                            
-                        )
-                    }*/
-                ) { innerPadding ->
-                    RealizarPedido(modifier = Modifier.padding(innerPadding))
+                    AppNavigation()
                 }
             }
         }
     }
+
+
+
+@Composable
+fun AppNavigation() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "pantallaInicio") {
+        composable("pantallaInicio") { PantallaInicio(navController) }
+        composable("realizarPedido") { RealizarPedido(navController) }
+        composable("listarPedidos") { ListarPedidos(navController) }
+        composable("resumenPedido") { ResumenPedido(navController) }
+        composable("formularioPago") { FormularioPago(navController) }
+        composable("resumenPago") { ResumenPago(navController)}
+    }
 }
 
 @Composable
-fun PantallaInicio(modifier: Modifier = Modifier) {
+fun PantallaInicio(navController: NavController, modifier: Modifier = Modifier) {
 Column(modifier = Modifier
     .fillMaxSize()
     .padding(16.dp),
@@ -84,14 +81,19 @@ Column(modifier = Modifier
                     + " \n" + Datos().obtenerUsuario().telefono
         )
         Spacer(modifier = Modifier.height(200.dp))
-    //Manda a la actividad RealizarPedido
-        Button(onClick = {/*TODO*/}) {
-            Text(stringResource(R.string.realizar_pedido))
+    Row {
+        //Manda a la actividad RealizarPedido
+        Button(onClick = {navController.navigate("realizarPedido")},
+            modifier = Modifier.padding(end = 32.dp)) {
+            Text(stringResource(R.string.realizar_pedido),
+                fontSize = 20.sp)
         }
-    //Manda a la actividad ListarPedidos
-        Button(onClick = {/*TODO*/}) {
-            Text(stringResource(R.string.listar_pedidos))
+        //Manda a la actividad ListarPedidos
+        Button(onClick = {navController.navigate("listarPedidos")}) {
+            Text(stringResource(R.string.listar_pedidos),
+                fontSize = 20.sp)
         }
+    }
 }
 }
 
@@ -99,6 +101,6 @@ Column(modifier = Modifier
 @Composable
 fun GreetingPreview() {
     CanoPomerSergioProyecto1Theme {
-        RealizarPedido()
+        AppNavigation()
     }
 }

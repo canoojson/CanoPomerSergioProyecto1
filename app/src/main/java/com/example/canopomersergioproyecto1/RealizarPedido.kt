@@ -1,5 +1,6 @@
 package com.example.canopomersergioproyecto1
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,19 +27,28 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.canopomersergioproyecto1.datos.Datos
+import com.example.canopomersergioproyecto1.modelo.Moto
+import com.example.canopomersergioproyecto1.modelo.Patinete
+import com.example.canopomersergioproyecto1.modelo.Pedido
+import com.example.canopomersergioproyecto1.modelo.Turismo
+import com.example.canopomersergioproyecto1.modelo.Usuario
+import com.example.canopomersergioproyecto1.modelo.Vehiculo
 
-@Preview(showBackground = true)
+
 @Composable
-fun RealizarPedido(modifier: Modifier = Modifier){
+fun RealizarPedido(navController: NavController, modifier: Modifier = Modifier){
 
     val radioOptions = listOf(R.string.coche_de_turismo, R.string.moto, R.string.scooter_electrico)
 
     val (selectedOption, onOptionSelected) = remember { mutableIntStateOf(radioOptions[0]) }
 
     var diasAlquiler by  remember { mutableStateOf("") }
+
+    val usuario : Usuario = Datos().obtenerUsuario()
 
     var precio = 0
 
@@ -48,6 +58,7 @@ fun RealizarPedido(modifier: Modifier = Modifier){
 
     var cilindrada : Int
 
+
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(top = 30.dp),
@@ -55,7 +66,7 @@ fun RealizarPedido(modifier: Modifier = Modifier){
         verticalArrangement = Arrangement.Top) {
         Text(
             stringResource(R.string.realizar_pedido),
-            fontSize = 40.sp,
+            fontSize = 30.sp,
             modifier = Modifier.padding(top = 30.dp))
 
         Text(stringResource(R.string.vehiculo),
@@ -103,6 +114,7 @@ fun RealizarPedido(modifier: Modifier = Modifier){
             }
         }
         if(selectedOption == R.string.coche_de_turismo){
+
             Text(stringResource(R.string.combustible),
                 fontSize = 20.sp,
                 modifier = Modifier.padding(top = 20.dp))
@@ -115,6 +127,7 @@ fun RealizarPedido(modifier: Modifier = Modifier){
                 precio += 15
             }
         }else if(selectedOption == R.string.moto){
+
             Text(stringResource(R.string.cilindrada),
                 fontSize = 20.sp,
                 modifier = Modifier.padding(top = 20.dp)
@@ -138,13 +151,17 @@ fun RealizarPedido(modifier: Modifier = Modifier){
         if (GPS){
             precio += 5
         }
-        Text("Dias de alquiler",
+        Text(
+            stringResource(R.string.dias_de_alquiler),
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 20.dp))
         TextField(
             value = diasAlquiler,
-            onValueChange = {diasAlquiler = it},
-            label = { Text(text = "Dias de alquiler")},
+            onValueChange = {input ->
+                val digits = input.filter { it.isDigit() }
+                diasAlquiler = digits
+            },
+            label = { Text(text = stringResource(R.string.dias_de_alquiler))},
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
@@ -153,7 +170,8 @@ fun RealizarPedido(modifier: Modifier = Modifier){
         }
         Row(modifier = Modifier.padding(top = 20.dp),
             verticalAlignment = Alignment.CenterVertically) {
-            Text("Precio total: ",
+            Text(
+                stringResource(R.string.precio_total),
                 fontSize = 20.sp,
                 modifier = Modifier)
             Text(text = precio.toString() + " €",
@@ -161,14 +179,20 @@ fun RealizarPedido(modifier: Modifier = Modifier){
         }
         Row(modifier = Modifier.padding(top = 20.dp)) {
             //Manda a la actividad ResumenPedido
-            Button(onClick = {/*TODO*/},
+            Button(onClick = {
+                if(diasAlquiler.isNotEmpty()){
+                    navController.navigate("resumenPedido")
+                }
+                             },
                 modifier = Modifier) {
-                Text(text = "Aceptar")
+                Text(stringResource(R.string.aceptar),
+                    fontSize = 20.sp)
             }
             //Manda a la pantalla de inicio de la aplicacion
-            Button(onClick = {/*TODO*/},
+            Button(onClick = {navController.navigate("pantallaInicio")},
                 modifier = Modifier.padding(start = 20.dp)) {
-                Text(text = "Cancelar")
+                Text(stringResource(R.string.cancelar),
+                    fontSize = 20.sp)
             }
         }
     }

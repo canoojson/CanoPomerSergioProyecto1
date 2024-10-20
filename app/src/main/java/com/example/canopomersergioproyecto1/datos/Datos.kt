@@ -10,13 +10,13 @@ import com.example.canopomersergioproyecto1.modelo.Usuario
 class Datos {
     val usuario = Usuario("Sergio", "Cano","Pomer",
         "loremipsum@lorem.com", "+34 000111222", R.drawable.fotoperfil)
-    val moto = Moto(250, true)
-    val turismo = Turismo("Gasolina", true)
-    val patinete = Patinete(true)
+    val moto = Moto(250)
+    val turismo = Turismo("Gasolina")
+    val patinete = Patinete()
     val listaPedidos : MutableList<Pedido> = mutableListOf(
-        Pedido(moto, usuario,true, 2),
-        Pedido(turismo, usuario,false, 1),
-        Pedido(patinete, usuario,false,3)
+        Pedido(moto, usuario,true, 2,50),
+        Pedido(turismo, usuario,false, 1,20),
+        Pedido(patinete, usuario,false,3,15)
     )
     fun cargarpedidos(): List<Pedido> = listaPedidos
 

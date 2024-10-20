@@ -2,20 +2,36 @@
     <string name="app_name">CanoPomerSergioProyecto1</string>
     <string name="foto_de_perfil">Foto de perfil</string>
     <string name="realizar_pedido">Realizar pedido</string>
-    <string name="listar_pedidos">Listar pedidos</string>
     <string name="moto">Moto</string>
     <string name="coche_de_turismo">Turismo</string>
     <string name="scooter_electrico">Patinete</string>
     <string name="imagen_del_vehiculo">Imagen del vehiculo</string>
     <string name="vehiculo">Vehiculo</string>
     <string name="di_sel">Diésel</string>
-    <string name="gasolina">Gasolina</string>
     <string name="el_ctrico">Eléctrico</string>
-    <string name="_50cc">50cc</string>
-    <string name="_125cc">125cc</string>
-    <string name="_250cc">250cc</string>
+    <string name="_50cc" translatable="false">50cc</string>
+    <string name="_125cc" translatable="false">125cc</string>
+    <string name="_250cc" translatable="false">250cc</string>
     <string name="combustible">Combustible</string>
     <string name="cilindrada">Cilindrada</string>
-    <string name="gps">GPS</string>
+    <string name="gps" translatable="false">GPS</string>
     <string name="resumen_del_pedido">Resumen del pedido</string>
+    <string name="volver">Volver</string>
+    <string name="formulario_de_pago">Formulario de pago</string>
+    <string name="metodos_de_pago">Metodos de pago</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="precio_total">"Precio total: "</string>
+    <string name="resumen_de_pago">Resumen de pago</string>
+    <string name="dias_de_alquiler">"Dias de alquiler: "</string>
+    <string name="dia">dia</string>
+    <string name="enviar">Enviar</string>
+    <string name="pagar">Pagar</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="fecha_de_caducidad">Fecha de caducidad</string>
+    <string name="numero_de_tarjeta">Numero de tarjeta</string>
+    <string name="abrir">Abrir</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="listar_pedidos">Listar pedidos</string>
+    <string name="gasolina">Gasolina</string>
 </resources>
