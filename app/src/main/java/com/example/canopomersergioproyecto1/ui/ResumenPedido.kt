@@ -1,4 +1,4 @@
-package com.example.canopomersergioproyecto1
+package com.example.canopomersergioproyecto1.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Turismo
@@ -32,11 +33,11 @@ fun ResumenPedido(navController: NavController, modifier: Modifier = Modifier){
                 bottom = 30.dp))
         Text(stringResource(R.string.vehiculo) + ": " + stringResource(pedido.vehiculo.stringResId),
             fontSize = 20.sp)
-        if(pedido.vehiculo.stringResId==R.string.coche_de_turismo){
+        if(pedido.vehiculo.stringResId== R.string.coche_de_turismo){
             Text(
                 stringResource(R.string.combustible)+ ": " + (pedido.vehiculo as Turismo).combustible,
                 fontSize = 20.sp)
-        }else if(pedido.vehiculo.stringResId==R.string.moto){
+        }else if(pedido.vehiculo.stringResId== R.string.moto){
             Text(
                 stringResource(R.string.cilindrada) + ": " + (pedido.vehiculo as Moto).cilindrada,
                 fontSize = 20.sp)

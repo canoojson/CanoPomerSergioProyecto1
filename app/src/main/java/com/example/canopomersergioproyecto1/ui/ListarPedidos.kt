@@ -1,9 +1,6 @@
-package com.example.canopomersergioproyecto1
+package com.example.canopomersergioproyecto1.ui
 
-import android.telephony.CarrierConfigManager
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,7 +19,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,10 +28,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Pedido
@@ -151,11 +147,11 @@ fun InformacionPedido(
     ){
         Text(stringResource(R.string.vehiculo) + ": " + stringResource(vehiculo.stringResId),
             fontSize = 20.sp)
-        if(vehiculo.stringResId==R.string.coche_de_turismo){
+        if(vehiculo.stringResId== R.string.coche_de_turismo){
             Text(
                 stringResource(R.string.combustible)+ ": " + (vehiculo as Turismo).combustible,
                 fontSize = 20.sp)
-        }else if(vehiculo.stringResId==R.string.moto){
+        }else if(vehiculo.stringResId== R.string.moto){
             Text(
                 stringResource(R.string.cilindrada) + ": " + (vehiculo as Moto).cilindrada,
                 fontSize = 20.sp)

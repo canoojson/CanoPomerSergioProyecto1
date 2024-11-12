@@ -34,4 +34,6 @@
     <string name="cerrar">Cerrar</string>
     <string name="listar_pedidos">Listar pedidos</string>
     <string name="gasolina">Gasolina</string>
+    <string name="inicio">Inicio</string>
+    <string name="listado_de_pedidos">Listado de pedidos</string>
 </resources>

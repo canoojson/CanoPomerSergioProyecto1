@@ -30,6 +30,11 @@ import androidx.navigation.compose.composable
 
 import androidx.navigation.compose.rememberNavController
 import com.example.canopomersergioproyecto1.datos.Datos
+import com.example.canopomersergioproyecto1.ui.FormularioPago
+import com.example.canopomersergioproyecto1.ui.ListarPedidos
+import com.example.canopomersergioproyecto1.ui.RealizarPedido
+import com.example.canopomersergioproyecto1.ui.ResumenPago
+import com.example.canopomersergioproyecto1.ui.ResumenPedido
 import com.example.canopomersergioproyecto1.ui.theme.CanoPomerSergioProyecto1Theme
 
 class MainActivity : ComponentActivity() {
@@ -56,7 +61,7 @@ fun AppNavigation() {
         composable("listarPedidos") { ListarPedidos(navController) }
         composable("resumenPedido") { ResumenPedido(navController) }
         composable("formularioPago") { FormularioPago(navController) }
-        composable("resumenPago") { ResumenPago(navController)}
+        composable("resumenPago") { ResumenPago(navController) }
     }
 }
 

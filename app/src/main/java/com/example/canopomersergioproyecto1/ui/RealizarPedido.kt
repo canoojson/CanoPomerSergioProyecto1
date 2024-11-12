@@ -1,6 +1,5 @@
-package com.example.canopomersergioproyecto1
+package com.example.canopomersergioproyecto1.ui
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,13 +29,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
-import com.example.canopomersergioproyecto1.modelo.Moto
-import com.example.canopomersergioproyecto1.modelo.Patinete
-import com.example.canopomersergioproyecto1.modelo.Pedido
-import com.example.canopomersergioproyecto1.modelo.Turismo
 import com.example.canopomersergioproyecto1.modelo.Usuario
-import com.example.canopomersergioproyecto1.modelo.Vehiculo
 
 
 @Composable

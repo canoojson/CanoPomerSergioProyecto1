@@ -1,4 +1,4 @@
-package com.example.canopomersergioproyecto1
+package com.example.canopomersergioproyecto1.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Turismo
@@ -40,13 +41,17 @@ fun ResumenPago(navController: NavController, modifier: Modifier = Modifier){
             Text(stringResource(R.string.vehiculo) + ": " + stringResource(pedido.vehiculo.stringResId),
                 fontSize = 20.sp)
             //Uso espacios ya que el \t no me funciona o no se aplicarlo bien
-            if(pedido.vehiculo.stringResId==R.string.coche_de_turismo){
+            if(pedido.vehiculo.stringResId== R.string.coche_de_turismo){
                 Text("Combustible: " + (vehiculo as Turismo).combustible + "                 " +
-                    if ((vehiculo as Turismo).combustible == stringResource(R.string.el_ctrico)) { "15€/" + stringResource(R.string.dia)}
-                    else if((vehiculo as Turismo).combustible == stringResource(R.string.gasolina)) {"20€/" + stringResource(R.string.dia)}
+                    if ((vehiculo as Turismo).combustible == stringResource(R.string.el_ctrico)) { "15€/" + stringResource(
+                        R.string.dia
+                    )}
+                    else if((vehiculo as Turismo).combustible == stringResource(R.string.gasolina)) {"20€/" + stringResource(
+                        R.string.dia
+                    )}
                     else {"25€/" + stringResource(R.string.dia)},
                     fontSize = 20.sp)
-            }else if(pedido.vehiculo.stringResId==R.string.moto){
+            }else if(pedido.vehiculo.stringResId== R.string.moto){
                 Text("Cilindrada: " + (pedido.vehiculo as Moto).cilindrada + "                 " +
                         if ((vehiculo as Moto).cilindrada == 50) { "10€/" + stringResource(R.string.dia)}
                         else if((vehiculo as Moto).cilindrada == 125) {"15€/" + stringResource(R.string.dia)}

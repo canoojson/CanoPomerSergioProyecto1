@@ -1,4 +1,4 @@
-package com.example.canopomersergioproyecto1
+package com.example.canopomersergioproyecto1.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -11,10 +11,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -24,12 +22,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.mascara.CreditCardVisualTransformation
 import com.example.canopomersergioproyecto1.mascara.ExpiryDateVisualTransformation
 
@@ -53,7 +49,7 @@ fun FormularioPago(navController: NavController, modifier: Modifier = Modifier){
         Text(stringResource(R.string.formulario_de_pago),
             modifier = Modifier.padding(16.dp),
             fontSize = 30.sp)
-        Image(painter = painterResource(id=R.drawable.metodosdepago),
+        Image(painter = painterResource(id= R.drawable.metodosdepago),
             contentDescription = stringResource(R.string.metodos_de_pago)
         )
         Row {
