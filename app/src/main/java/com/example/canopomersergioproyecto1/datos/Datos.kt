@@ -14,9 +14,9 @@ class Datos {
     val turismo = Turismo("Gasolina")
     val patinete = Patinete()
     val listaPedidos : MutableList<Pedido> = mutableListOf(
-        Pedido(moto, usuario,true, 2,50),
-        Pedido(turismo, usuario,false, 1,20),
-        Pedido(patinete, usuario,false,3,15)
+        Pedido(moto, usuario,null,true, 2,50),
+        Pedido(turismo, usuario,null,false, 1,20),
+        Pedido(patinete, usuario,null,false,3,15)
     )
     fun cargarpedidos(): List<Pedido> = listaPedidos
 
