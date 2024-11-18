@@ -15,13 +15,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
+import com.example.canopomersergioproyecto1.modelo.AppUIState
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Turismo
 
 @Composable
-fun ResumenPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
+fun ResumenPedido(appUIState: AppUIState, onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
 
-    val pedido = Datos().listaPedidos[Datos().listaPedidos.size - 1]
+    val pedido = appUIState.pedido
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -31,20 +32,22 @@ fun ResumenPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
             fontSize = 30.sp,
             modifier = Modifier.padding(top = 30.dp,
                 bottom = 30.dp))
-        Text(stringResource(R.string.vehiculo) + ": " + stringResource(pedido.vehiculo!!.stringResId),
+        Text(stringResource(R.string.vehiculo) + ": " + stringResource(pedido!!.vehiculo!!.stringResId),
             fontSize = 20.sp)
-        if(pedido.vehiculo?.stringResId== R.string.coche_de_turismo){
+        if(pedido!!.vehiculo?.stringResId== R.string.coche_de_turismo){
             Text(
                 stringResource(R.string.combustible)+ ": " + (pedido.vehiculo as Turismo).combustible,
                 fontSize = 20.sp)
-        }else if(pedido.vehiculo?.stringResId== R.string.moto){
+        }else if(pedido!!.vehiculo?.stringResId== R.string.moto){
             Text(
                 stringResource(R.string.cilindrada) + ": " + (pedido.vehiculo as Moto).cilindrada,
                 fontSize = 20.sp)
         }
-        Text("GPS: " + if(pedido.Gps) "Sí" else "No",
+        Text("GPS: " + if(pedido!!.Gps) "Sí" else "No",
             fontSize = 20.sp)
         Text(stringResource(R.string.dias_de_alquiler) + pedido.tiempoAlquiler,
+            fontSize = 20.sp)
+        Text(stringResource(R.string.precio_total) + ": " + pedido.precio +"€",
             fontSize = 20.sp)
         Row(modifier = Modifier.padding(top = 20.dp)){
             //Manda a la actividad FormularioPago

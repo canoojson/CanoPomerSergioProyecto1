@@ -28,9 +28,16 @@ import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.mascara.CreditCardVisualTransformation
 import com.example.canopomersergioproyecto1.mascara.ExpiryDateVisualTransformation
+import com.example.canopomersergioproyecto1.modelo.AppUIState
+import com.example.canopomersergioproyecto1.modelo.DatosPago
+import com.example.canopomersergioproyecto1.modelo.Pedido
 
 @Composable
-fun FormularioPago(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
+fun FormularioPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modifier){
+
+    var datosPago : DatosPago
+
+    val pedido : Pedido? = appUIState.pedido
 
     val radioOptions = listOf("VISA", "MASTERCARD", "EURO6000")
 
@@ -125,11 +132,13 @@ fun FormularioPago(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
+            datosPago = DatosPago(selectedOption,numeroTarjeta, fechaCaducidad, cvc)
+            pedido?.datosPago = datosPago
         }
 
         Row(modifier = Modifier.padding( bottom = 20.dp),
             verticalAlignment = Alignment.Bottom) {
-            Button(onClick = {onAceptarPulsado()},
+            Button(onClick = {onAceptarPulsado(pedido!!)},
                 modifier = Modifier.padding(end = 32.dp)) {
                 Text(stringResource(R.string.aceptar),
                     fontSize = 20.sp)

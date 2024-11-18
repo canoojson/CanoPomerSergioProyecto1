@@ -1,5 +1,6 @@
 package com.example.canopomersergioproyecto1.ui
 
+import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -19,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.res.stringResource
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -76,17 +78,20 @@ fun AlquilerVehiculosApp(
                 )
             }
             composable(route= Pantallas.ListarPedidos.name){
-                ListarPedidos()
+                ListarPedidos(appUIState = uiState)
             }
             composable(route = Pantallas.RealizarPedido.name){
                 RealizarPedido(
+                    appUIState = uiState,
                     onAceptarPulsado = {
+                        viewModel.actualizarPedido(it)
                         navController.navigate(Pantallas.ResumenPedido.name)
                     }
                 )
             }
             composable(route = Pantallas.ResumenPedido.name){
                 ResumenPedido(
+                    appUIState = uiState,
                     onAceptarPulsado = {
                         navController.navigate(Pantallas.FormularioPago.name)
                     }
@@ -94,16 +99,20 @@ fun AlquilerVehiculosApp(
             }
             composable(route = Pantallas.FormularioPago.name){
                 FormularioPago(
+                    appUIState = uiState,
                     onAceptarPulsado = {
+                        viewModel.actualizarPedido(it)
                         navController.navigate(Pantallas.ResumenPago.name)
                     }
                 )
             }
             composable(route = Pantallas.ResumenPago.name) {
                 ResumenPago(
+                    appUIState = uiState,
                     onAceptarPulsado = {
+                        viewModel.agregarPedido(it)
                         navController.popBackStack(Pantallas.PantallaInicio.name, inclusive = false)
-                    }
+                    },
                 )
             }
         }

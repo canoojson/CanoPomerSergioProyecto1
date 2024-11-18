@@ -8,18 +8,10 @@ import com.example.canopomersergioproyecto1.modelo.Turismo
 import com.example.canopomersergioproyecto1.modelo.Usuario
 
 class Datos {
-    val usuario = Usuario("Sergio", "Cano","Pomer",
-        "loremipsum@lorem.com", "+34 000111222", R.drawable.fotoperfil)
     val moto = Moto(250)
     val turismo = Turismo("Gasolina")
     val patinete = Patinete()
-    val listaPedidos : MutableList<Pedido> = mutableListOf(
-        Pedido(moto, usuario,null,true, 2,50),
-        Pedido(turismo, usuario,null,false, 1,20),
-        Pedido(patinete, usuario,null,false,3,15)
-    )
-    fun cargarpedidos(): List<Pedido> = listaPedidos
-
-    fun obtenerUsuario(): Usuario = usuario
-
+    val usuario = Usuario("Sergio", "Cano","Pomer",
+        "loremipsum@lorem.com", "+34 000111222", R.drawable.fotoperfil)
+    fun obtenerUsuario(): Usuario = Datos().usuario
 }

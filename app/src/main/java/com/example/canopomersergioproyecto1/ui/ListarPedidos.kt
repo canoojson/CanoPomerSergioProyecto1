@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
+import com.example.canopomersergioproyecto1.modelo.AppUIState
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Pedido
 import com.example.canopomersergioproyecto1.modelo.Turismo
@@ -116,7 +117,7 @@ fun ListaPedidos(lista: List<Pedido>, modifier: Modifier = Modifier){
     }
 }
 @Composable
-fun ListarPedidos(modifier: Modifier = Modifier){
+fun ListarPedidos(appUIState: AppUIState, modifier: Modifier = Modifier){
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(top = 30.dp),
@@ -128,7 +129,7 @@ fun ListarPedidos(modifier: Modifier = Modifier){
             modifier = Modifier.padding(bottom = 10.dp,
                 top = 15.dp))
         ListaPedidos(
-            lista = Datos().cargarpedidos(),
+            lista = appUIState.pedidos,
             modifier = modifier
         )
 

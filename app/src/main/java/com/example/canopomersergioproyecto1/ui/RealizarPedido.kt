@@ -31,11 +31,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
+import com.example.canopomersergioproyecto1.modelo.AppUIState
+import com.example.canopomersergioproyecto1.modelo.Moto
+import com.example.canopomersergioproyecto1.modelo.Patinete
+import com.example.canopomersergioproyecto1.modelo.Pedido
+import com.example.canopomersergioproyecto1.modelo.Turismo
 import com.example.canopomersergioproyecto1.modelo.Usuario
+import com.example.canopomersergioproyecto1.modelo.Vehiculo
 
 
 @Composable
-fun RealizarPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
+fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modifier){
 
     val radioOptions = listOf(R.string.coche_de_turismo, R.string.moto, R.string.scooter_electrico)
 
@@ -52,6 +58,10 @@ fun RealizarPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
     var combustible : Int
 
     var cilindrada : Int
+
+    var vehiculo : Vehiculo
+
+    var pedido : Pedido
 
 
     Column(modifier = Modifier
@@ -109,7 +119,6 @@ fun RealizarPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
             }
         }
         if(selectedOption == R.string.coche_de_turismo){
-
             Text(stringResource(R.string.combustible),
                 fontSize = 20.sp,
                 modifier = Modifier.padding(top = 20.dp))
@@ -121,6 +130,7 @@ fun RealizarPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
             }else{
                 precio += 15
             }
+            vehiculo = Turismo(stringResource(combustible), R.drawable.coche_de_turismo, R.string.coche_de_turismo)
         }else if(selectedOption == R.string.moto){
 
             Text(stringResource(R.string.cilindrada),
@@ -136,8 +146,10 @@ fun RealizarPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
             }else{
                 precio += 15
             }
+            vehiculo = Moto(cilindrada, R.drawable.moto, R.string.moto)
         }else{
             precio += 5
+            vehiculo = Patinete(R.drawable.scooter_electrico, R.string.scooter_electrico)
         }
         Text(stringResource(R.string.gps),
             fontSize = 20.sp,
@@ -172,11 +184,13 @@ fun RealizarPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
             Text(text = precio.toString() + " €",
                 fontSize = 20.sp)
         }
+
         Row(modifier = Modifier.padding(top = 20.dp)) {
             //Manda a la actividad ResumenPedido
             Button(onClick = {
                 if(diasAlquiler.isNotEmpty()){
-                    onAceptarPulsado()
+                    pedido = Pedido(vehiculo, usuario, null, GPS, diasAlquiler.toInt(), precio)
+                    onAceptarPulsado(pedido)
                 } },
                 modifier = Modifier) {
                 Text(stringResource(R.string.aceptar),

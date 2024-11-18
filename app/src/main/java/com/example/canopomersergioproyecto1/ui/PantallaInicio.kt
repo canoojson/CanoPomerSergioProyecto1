@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
+import com.example.canopomersergioproyecto1.modelo.AppUIState
 
 @Composable
 fun PantallaInicio(onRealizarPedidoPulsado: () -> Unit, onListarPedidosPulsado: () -> Unit, modifier: Modifier = Modifier) {
@@ -28,6 +29,7 @@ fun PantallaInicio(onRealizarPedidoPulsado: () -> Unit, onListarPedidosPulsado: 
         .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
+        var appUIState = AppUIState()
         Image(
             painter = painterResource(id= Datos().obtenerUsuario().fotoPerfil),
             contentDescription = stringResource(R.string.foto_de_perfil),
