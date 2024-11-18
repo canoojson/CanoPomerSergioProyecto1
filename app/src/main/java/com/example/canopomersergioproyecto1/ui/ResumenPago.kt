@@ -1,8 +1,6 @@
 package com.example.canopomersergioproyecto1.ui
 
-import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,25 +15,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.modelo.AppUIState
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Pedido
 import com.example.canopomersergioproyecto1.modelo.Turismo
-import com.example.canopomersergioproyecto1.modelo.Vehiculo
 
 @Composable
-fun ResumenPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modifier){
+fun ResumenPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit){
 
     val pedido = appUIState.pedido
 
     val vehiculo = pedido?.vehiculo
-
-    val GPS = pedido?.Gps
-
-    val tiempoAlquiler = pedido?.tiempoAlquiler
 
     val usuario = Datos().obtenerUsuario()
 
@@ -54,17 +46,17 @@ fun ResumenPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, modi
             //Uso espacios ya que el \t no me funciona o no se aplicarlo bien
             when(vehiculo?.stringResId){
                 R.string.coche_de_turismo -> Text("Combustible: " + (vehiculo as Turismo).combustible + "                 " +
-                        if ((vehiculo as Turismo).combustible == stringResource(R.string.el_ctrico)) { "15€/" + stringResource(
+                        if ((vehiculo).combustible == stringResource(R.string.el_ctrico)) { "15€/" + stringResource(
                             R.string.dia
                         )}
-                        else if((vehiculo as Turismo).combustible == stringResource(R.string.gasolina)) {"20€/" + stringResource(
+                        else if((vehiculo).combustible == stringResource(R.string.gasolina)) {"20€/" + stringResource(
                             R.string.dia
                         )}
                         else {"25€/" + stringResource(R.string.dia)},
                     fontSize = 20.sp)
                 R.string.moto -> Text("Cilindrada: " + (pedido.vehiculo as Moto).cilindrada + "                 " +
                         if ((vehiculo as Moto).cilindrada == 50) { "10€/" + stringResource(R.string.dia)}
-                        else if((vehiculo as Moto).cilindrada == 125) {"15€/" + stringResource(R.string.dia)}
+                        else if((vehiculo).cilindrada == 125) {"15€/" + stringResource(R.string.dia)}
                         else {"20€/" + stringResource(R.string.dia)},
                     fontSize = 20.sp)
             }

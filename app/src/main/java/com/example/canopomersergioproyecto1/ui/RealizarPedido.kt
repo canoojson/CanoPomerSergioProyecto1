@@ -28,7 +28,6 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.modelo.AppUIState
@@ -41,7 +40,7 @@ import com.example.canopomersergioproyecto1.modelo.Vehiculo
 
 
 @Composable
-fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modifier){
+fun RealizarPedido(onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modifier){
 
     val radioOptions = listOf(R.string.coche_de_turismo, R.string.moto, R.string.scooter_electrico)
 
@@ -72,14 +71,14 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
         Text(
             stringResource(R.string.realizar_pedido),
             fontSize = 30.sp,
-            modifier = Modifier.padding(top = 30.dp))
+            modifier = modifier.padding(top = 30.dp))
 
         Text(stringResource(R.string.vehiculo),
             fontSize = 20.sp,
-            modifier = Modifier.padding(top = 20.dp))
-        Row(modifier = Modifier) {
+            modifier = modifier.padding(top = 20.dp))
+        Row(modifier = modifier) {
             radioOptions.forEach { text ->
-                Row(modifier = Modifier
+                Row(modifier = modifier
                     .selectable(
                         selected = (text == selectedOption),
                         onClick = { onOptionSelected(text) },
@@ -95,21 +94,21 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
                         Image(
                             painter = painterResource(R.drawable.coche_de_turismo),
                             contentDescription = stringResource(R.string.imagen_del_vehiculo),
-                            modifier = Modifier
+                            modifier = modifier
                                 .size(30.dp))
                     }
                     if (text == R.string.moto){
                         Image(
                             painter = painterResource(R.drawable.moto),
                             contentDescription = stringResource(R.string.moto),
-                            modifier = Modifier
+                            modifier = modifier
                                 .size(30.dp))
                     }
                     if (text == R.string.scooter_electrico){
                         Image(
                             painter = painterResource(R.drawable.scooter_electrico),
                             contentDescription = stringResource(R.string.scooter_electrico),
-                            modifier = Modifier
+                            modifier = modifier
                                 .size(30.dp))
                     }
                     Text(
@@ -121,7 +120,7 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
         if(selectedOption == R.string.coche_de_turismo){
             Text(stringResource(R.string.combustible),
                 fontSize = 20.sp,
-                modifier = Modifier.padding(top = 20.dp))
+                modifier = modifier.padding(top = 20.dp))
             combustible = pintarCombustible()
             if (combustible == R.string.di_sel){
                 precio += 25
@@ -135,7 +134,7 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
 
             Text(stringResource(R.string.cilindrada),
                 fontSize = 20.sp,
-                modifier = Modifier.padding(top = 20.dp)
+                modifier = modifier.padding(top = 20.dp)
             )
             cilindrada = pintarCilindrada()
 
@@ -153,7 +152,7 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
         }
         Text(stringResource(R.string.gps),
             fontSize = 20.sp,
-            modifier = Modifier.padding(top = 20.dp))
+            modifier = modifier.padding(top = 20.dp))
         GPS = pintarGPS()
         if (GPS){
             precio += 5
@@ -161,7 +160,7 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
         Text(
             stringResource(R.string.dias_de_alquiler),
             fontSize = 20.sp,
-            modifier = Modifier.padding(top = 20.dp))
+            modifier = modifier.padding(top = 20.dp))
         TextField(
             value = diasAlquiler,
             onValueChange = {input ->
@@ -175,12 +174,12 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
         if (diasAlquiler.isNotEmpty()){
             precio *= diasAlquiler.toInt()
         }
-        Row(modifier = Modifier.padding(top = 20.dp),
+        Row(modifier = modifier.padding(top = 20.dp),
             verticalAlignment = Alignment.CenterVertically) {
             Text(
                 stringResource(R.string.precio_total),
                 fontSize = 20.sp,
-                modifier = Modifier)
+                modifier = modifier)
             Text(text = precio.toString() + " €",
                 fontSize = 20.sp)
         }
@@ -192,7 +191,7 @@ fun RealizarPedido(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
                     pedido = Pedido(vehiculo, usuario, null, GPS, diasAlquiler.toInt(), precio)
                     onAceptarPulsado(pedido)
                 } },
-                modifier = Modifier) {
+                modifier = modifier) {
                 Text(stringResource(R.string.aceptar),
                     fontSize = 20.sp)
             }
@@ -211,9 +210,9 @@ fun pintarCombustible(modifier: Modifier = Modifier): Int{
     val radioOptions = listOf(R.string.di_sel, R.string.gasolina, R.string.el_ctrico)
 
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0]) }
-    Row(modifier = Modifier) {
+    Row(modifier = modifier) {
         radioOptions.forEach { text ->
-            Row(modifier = Modifier
+            Row(modifier = modifier
                 .selectable(
                     selected = (text == selectedOption),
                     onClick = { onOptionSelected(text) },
@@ -239,9 +238,9 @@ fun pintarCilindrada(modifier: Modifier = Modifier): Int{
     val radioOptions = listOf(R.string._50cc, R.string._125cc, R.string._250cc)
 
     val (selectedOption, onOptionSelected) = remember { mutableIntStateOf(radioOptions[0]) }
-    Row(modifier = Modifier) {
+    Row(modifier = modifier) {
         radioOptions.forEach { text ->
-            Row(modifier = Modifier
+            Row(modifier = modifier
                 .selectable(
                     selected = (text == selectedOption),
                     onClick = { onOptionSelected(text) },

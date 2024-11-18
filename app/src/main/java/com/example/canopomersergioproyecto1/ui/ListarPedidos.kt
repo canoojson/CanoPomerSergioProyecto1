@@ -1,6 +1,5 @@
 package com.example.canopomersergioproyecto1.ui
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,7 +14,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,9 +29,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
-import com.example.canopomersergioproyecto1.datos.Datos
 import com.example.canopomersergioproyecto1.modelo.AppUIState
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Pedido
@@ -71,7 +67,7 @@ fun TarjetaPedido(pedido: Pedido, modifier: Modifier = Modifier){
             pedido.vehiculo?.let {
                 InformacionPedido(
                     it,pedido.tiempoAlquiler,pedido.precio,pedido.Gps,
-                    modifier = Modifier.padding(
+                    modifier = modifier.padding(
                         start = 16.dp,
                         top = 8.dp,
                         end = 16.dp,
@@ -165,6 +161,8 @@ fun InformacionPedido(
         Text("GPS: " + if(Gps) "Sí" else "No",
             fontSize = 20.sp)
         Text(stringResource(R.string.dias_de_alquiler) + diasAlquiler,
+            fontSize = 20.sp)
+        Text(stringResource(R.string.precio_total) + precio + "€",
             fontSize = 20.sp)
     }
 

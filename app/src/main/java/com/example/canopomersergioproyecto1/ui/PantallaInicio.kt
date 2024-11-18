@@ -29,11 +29,10 @@ fun PantallaInicio(onRealizarPedidoPulsado: () -> Unit, onListarPedidosPulsado: 
         .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
-        var appUIState = AppUIState()
         Image(
             painter = painterResource(id= Datos().obtenerUsuario().fotoPerfil),
             contentDescription = stringResource(R.string.foto_de_perfil),
-            modifier = Modifier.size(100.dp),
+            modifier = modifier.size(100.dp),
         )
         Spacer(modifier = Modifier.height(10.dp))
         Text(

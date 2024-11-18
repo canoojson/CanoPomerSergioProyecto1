@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">CanoPomerSergioProyecto1</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="Typos">CanoPomerSergioProyecto1</string>
     <string name="foto_de_perfil">Foto de perfil</string>
     <string name="realizar_pedido">Realizar pedido</string>
     <string name="moto">Moto</string>

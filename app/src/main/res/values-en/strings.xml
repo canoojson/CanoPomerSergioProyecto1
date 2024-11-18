@@ -31,4 +31,8 @@
     <string name="numero_de_tarjeta">Card number</string>
     <string name="abrir">Open</string>
     <string name="cerrar">Close</string>
+    <string name="inicio">Start</string>
+    <string name="listado_de_pedidos">Order List</string>
+    <string name="atras">Go Back</string>
+    <string name="recibo_de_alquiler_de_veh_culo">Vehicle rental receipt</string>
 </resources>

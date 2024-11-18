@@ -24,7 +24,6 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.mascara.CreditCardVisualTransformation
 import com.example.canopomersergioproyecto1.mascara.ExpiryDateVisualTransformation
@@ -49,7 +48,7 @@ fun FormularioPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
 
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0]) }
 
-    Column(modifier = Modifier
+    Column(modifier = modifier
         .fillMaxSize()
         .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
