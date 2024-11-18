@@ -30,7 +30,7 @@ import com.example.canopomersergioproyecto1.mascara.CreditCardVisualTransformati
 import com.example.canopomersergioproyecto1.mascara.ExpiryDateVisualTransformation
 
 @Composable
-fun FormularioPago(navController: NavController, modifier: Modifier = Modifier){
+fun FormularioPago(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
 
     val radioOptions = listOf("VISA", "MASTERCARD", "EURO6000")
 
@@ -129,15 +129,15 @@ fun FormularioPago(navController: NavController, modifier: Modifier = Modifier){
 
         Row(modifier = Modifier.padding( bottom = 20.dp),
             verticalAlignment = Alignment.Bottom) {
-            Button(onClick = {navController.navigate("resumenPago")},
+            Button(onClick = {onAceptarPulsado()},
                 modifier = Modifier.padding(end = 32.dp)) {
                 Text(stringResource(R.string.aceptar),
                     fontSize = 20.sp)
             }
-            Button(onClick = {navController.navigate("pantallaInicio")}) {
+            /*Button(onClick = {}) {
                 Text(stringResource(R.string.cancelar),
                     fontSize = 20.sp)
-            }
+            }*/
         }
     }
 }

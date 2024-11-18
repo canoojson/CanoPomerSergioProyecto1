@@ -1,5 +1,6 @@
 package com.example.canopomersergioproyecto1.ui
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -49,14 +50,14 @@ fun TarjetaPedido(pedido: Pedido, modifier: Modifier = Modifier){
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(pedido.vehiculo.imagenResId),
+                painter = painterResource(pedido.vehiculo!!.imagenResId),
                 contentDescription = stringResource(R.string.imagen_del_vehiculo),
                 modifier = Modifier
                     .size(66.dp)
                     .padding(start = 20.dp)
             )
             Text(
-                text = stringResource(pedido.vehiculo.stringResId),
+                text = stringResource(pedido.vehiculo!!.stringResId),
                 modifier = Modifier.padding(16.dp)
             )
             Spacer(modifier = Modifier.weight(1f))
@@ -66,15 +67,17 @@ fun TarjetaPedido(pedido: Pedido, modifier: Modifier = Modifier){
             )
         }
         if (abierto) {
-            InformacionPedido(
-                pedido.vehiculo,pedido.tiempoAlquiler,pedido.precio,pedido.Gps,
-                modifier = Modifier.padding(
-                    start = 16.dp,
-                    top = 8.dp,
-                    end = 16.dp,
-                    bottom = 16.dp
+            pedido.vehiculo?.let {
+                InformacionPedido(
+                    it,pedido.tiempoAlquiler,pedido.precio,pedido.Gps,
+                    modifier = Modifier.padding(
+                        start = 16.dp,
+                        top = 8.dp,
+                        end = 16.dp,
+                        bottom = 16.dp
+                    )
                 )
-            )
+            }
         }
     }
 }
@@ -109,10 +112,11 @@ fun ListaPedidos(lista: List<Pedido>, modifier: Modifier = Modifier){
             )
         }
 
+
     }
 }
 @Composable
-fun ListarPedidos(navController: NavController, modifier: Modifier = Modifier){
+fun ListarPedidos(modifier: Modifier = Modifier){
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(top = 30.dp),
@@ -127,10 +131,11 @@ fun ListarPedidos(navController: NavController, modifier: Modifier = Modifier){
             lista = Datos().cargarpedidos(),
             modifier = modifier
         )
-        Button(onClick = {navController.navigate("pantallaInicio")}) {
+
+        /*Button(onClick = {onVolverPulsado()}) {
             Text(stringResource(R.string.volver),
                 fontSize = 20.sp)
-        }
+        }*/
     }
 }
 

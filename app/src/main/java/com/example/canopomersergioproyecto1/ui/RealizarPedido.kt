@@ -35,7 +35,7 @@ import com.example.canopomersergioproyecto1.modelo.Usuario
 
 
 @Composable
-fun RealizarPedido(navController: NavController, modifier: Modifier = Modifier){
+fun RealizarPedido(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
 
     val radioOptions = listOf(R.string.coche_de_turismo, R.string.moto, R.string.scooter_electrico)
 
@@ -176,19 +176,18 @@ fun RealizarPedido(navController: NavController, modifier: Modifier = Modifier){
             //Manda a la actividad ResumenPedido
             Button(onClick = {
                 if(diasAlquiler.isNotEmpty()){
-                    navController.navigate("resumenPedido")
-                }
-                             },
+                    onAceptarPulsado()
+                } },
                 modifier = Modifier) {
                 Text(stringResource(R.string.aceptar),
                     fontSize = 20.sp)
             }
             //Manda a la pantalla de inicio de la aplicacion
-            Button(onClick = {navController.navigate("pantallaInicio")},
+            /*Button(onClick = {},
                 modifier = Modifier.padding(start = 20.dp)) {
                 Text(stringResource(R.string.cancelar),
                     fontSize = 20.sp)
-            }
+            }*/
         }
     }
 }

@@ -30,6 +30,7 @@ import androidx.navigation.compose.composable
 
 import androidx.navigation.compose.rememberNavController
 import com.example.canopomersergioproyecto1.datos.Datos
+import com.example.canopomersergioproyecto1.ui.AlquilerVehiculosApp
 import com.example.canopomersergioproyecto1.ui.FormularioPago
 import com.example.canopomersergioproyecto1.ui.ListarPedidos
 import com.example.canopomersergioproyecto1.ui.RealizarPedido
@@ -44,68 +45,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CanoPomerSergioProyecto1Theme {
-                    AppNavigation()
+                    AlquilerVehiculosApp()
                 }
             }
         }
     }
 
-
-
-@Composable
-fun AppNavigation() {
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "pantallaInicio") {
-        composable("pantallaInicio") { PantallaInicio(navController) }
-        composable("realizarPedido") { RealizarPedido(navController) }
-        composable("listarPedidos") { ListarPedidos(navController) }
-        composable("resumenPedido") { ResumenPedido(navController) }
-        composable("formularioPago") { FormularioPago(navController) }
-        composable("resumenPago") { ResumenPago(navController) }
-    }
-}
-
-@Composable
-fun PantallaInicio(navController: NavController, modifier: Modifier = Modifier) {
-Column(modifier = Modifier
-    .fillMaxSize()
-    .padding(16.dp),
-    horizontalAlignment = Alignment.CenterHorizontally,
-    verticalArrangement = Arrangement.Center) {
-        Image(
-            painter = painterResource(id=Datos().obtenerUsuario().fotoPerfil),
-            contentDescription = stringResource(R.string.foto_de_perfil),
-            modifier = Modifier.size(100.dp),
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        Text(
-            text = Datos().obtenerUsuario().nombre
-                    + " " + Datos().obtenerUsuario().apellido1
-                    + " " + Datos().obtenerUsuario().apellido2
-                    + " \n" + Datos().obtenerUsuario().email
-                    + " \n" + Datos().obtenerUsuario().telefono
-        )
-        Spacer(modifier = Modifier.height(200.dp))
-    Row {
-        //Manda a la actividad RealizarPedido
-        Button(onClick = {navController.navigate("realizarPedido")},
-            modifier = Modifier.padding(end = 32.dp)) {
-            Text(stringResource(R.string.realizar_pedido),
-                fontSize = 20.sp)
-        }
-        //Manda a la actividad ListarPedidos
-        Button(onClick = {navController.navigate("listarPedidos")}) {
-            Text(stringResource(R.string.listar_pedidos),
-                fontSize = 20.sp)
-        }
-    }
-}
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CanoPomerSergioProyecto1Theme {
-        AppNavigation()
-    }
-}

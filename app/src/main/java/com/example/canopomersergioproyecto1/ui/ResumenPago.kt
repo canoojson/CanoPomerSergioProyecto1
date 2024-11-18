@@ -19,7 +19,7 @@ import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Turismo
 
 @Composable
-fun ResumenPago(navController: NavController, modifier: Modifier = Modifier){
+fun ResumenPago(onAceptarPulsado: () -> Unit, modifier: Modifier = Modifier){
 
     val pedido = Datos().listaPedidos[1]
 
@@ -38,10 +38,10 @@ fun ResumenPago(navController: NavController, modifier: Modifier = Modifier){
             Text(text = stringResource(R.string.resumen_de_pago),
                 modifier = Modifier.padding(16.dp),
                 fontSize = 30.sp)
-            Text(stringResource(R.string.vehiculo) + ": " + stringResource(pedido.vehiculo.stringResId),
+            Text(stringResource(R.string.vehiculo) + ": " + stringResource(pedido.vehiculo!!.stringResId),
                 fontSize = 20.sp)
             //Uso espacios ya que el \t no me funciona o no se aplicarlo bien
-            if(pedido.vehiculo.stringResId== R.string.coche_de_turismo){
+            if(pedido.vehiculo!!.stringResId== R.string.coche_de_turismo){
                 Text("Combustible: " + (vehiculo as Turismo).combustible + "                 " +
                     if ((vehiculo as Turismo).combustible == stringResource(R.string.el_ctrico)) { "15€/" + stringResource(
                         R.string.dia
@@ -51,7 +51,7 @@ fun ResumenPago(navController: NavController, modifier: Modifier = Modifier){
                     )}
                     else {"25€/" + stringResource(R.string.dia)},
                     fontSize = 20.sp)
-            }else if(pedido.vehiculo.stringResId== R.string.moto){
+            }else if(pedido.vehiculo!!.stringResId== R.string.moto){
                 Text("Cilindrada: " + (pedido.vehiculo as Moto).cilindrada + "                 " +
                         if ((vehiculo as Moto).cilindrada == 50) { "10€/" + stringResource(R.string.dia)}
                         else if((vehiculo as Moto).cilindrada == 125) {"15€/" + stringResource(R.string.dia)}
@@ -70,7 +70,7 @@ fun ResumenPago(navController: NavController, modifier: Modifier = Modifier){
         }
         Row (verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(top = 20.dp)){
-            Button(onClick = {navController.navigate("pantallaInicio")},
+            Button(onClick = {onAceptarPulsado()},
                 modifier = Modifier.padding(end = 20.dp)) {
                 Text(stringResource(R.string.aceptar),
                     fontSize = 20.sp)
