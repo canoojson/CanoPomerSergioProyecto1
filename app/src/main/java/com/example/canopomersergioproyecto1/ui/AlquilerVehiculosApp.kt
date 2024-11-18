@@ -122,9 +122,7 @@ fun AppTopBar(
 ){
     TopAppBar(
         title = { Text(stringResource(pantallaActual.titulo)) },
-        colors = TopAppBarDefaults.mediumTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        ),
+        colors = TopAppBarDefaults.topAppBarColors(),
         navigationIcon = {
             if (puedeNavegarAtras) {
                 IconButton(onClick = onNavegarAtras) {
