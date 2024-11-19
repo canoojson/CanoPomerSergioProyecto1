@@ -7,7 +7,6 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -31,7 +30,7 @@ enum class Pantallas(@StringRes val titulo: Int){
     RealizarPedido(titulo = R.string.realizar_pedido),
     ResumenPedido(titulo = R.string.resumen_del_pedido),
     FormularioPago(titulo = R.string.formulario_de_pago),
-    ResumenPago(titulo = R.string.resumen_de_pago),
+    ResumenPago(titulo = R.string.resumen_de_pago)
 }
 
 @Composable
