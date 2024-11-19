@@ -155,7 +155,7 @@ fun InformacionPedido(
                 fontSize = 20.sp)
         }else if(vehiculo.stringResId== R.string.moto){
             Text(
-                stringResource(R.string.cilindrada) + ": " + (vehiculo as Moto).cilindrada,
+                stringResource(R.string.cilindrada) + ": " + stringResource((vehiculo as Moto).cilindrada),
                 fontSize = 20.sp)
         }
         Text("GPS: " + if(Gps) "Sí" else "No",

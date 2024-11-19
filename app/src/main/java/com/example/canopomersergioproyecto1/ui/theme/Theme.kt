@@ -10,19 +10,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 // Definición de colores personalizados
-private val DarkBackground = Color(0xFF000000) // Fondo negro
-private val WhiteText = Color(0xFFFFFFFF)      // Texto blanco
-private val SoftRed = Color(0xFFD32F2F)        // Botones rojos no muy fuertes
-private val ButtonText = Color(0xFFFFFFFF)    // Texto de botón blanco
+private val PurplePrimary = Color(0xFF6200EE)        // Color principal (morado)
+private val WhiteText = Color(0xFFFFFFFF)            // Texto blanco
+private val ErrorRed = Color(0xFFB00020)             // Rojo para errores
+private val BackgroundBlack = Color(0xFF000000)      // Fondo negro
 
 // Esquema de colores para el tema oscuro
 private val DarkColorScheme = darkColorScheme(
-    primary = SoftRed,            // Color principal (botones)
-    onPrimary = ButtonText,       // Texto sobre el color principal
-    background = DarkBackground,  // Fondo de la aplicación
-    surface = DarkBackground,     // Superficie de componentes
-    onBackground = WhiteText,     // Texto sobre el fondo
-    onSurface = WhiteText         // Texto sobre superficies
+    primary = PurplePrimary,            // Color principal (botones, títulos)
+    onPrimary = WhiteText,              // Texto sobre el color principal
+    background = BackgroundBlack,       // Fondo de la aplicación
+    surface = BackgroundBlack,          // Superficie de componentes
+    onBackground = WhiteText,           // Texto sobre el fondo
+    onSurface = WhiteText,              // Texto sobre superficies
+    error = ErrorRed,                   // Color para errores
+    onError = WhiteText                 // Texto sobre errores
 )
 
 // Tipografía personalizada

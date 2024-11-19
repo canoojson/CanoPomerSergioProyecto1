@@ -7,7 +7,7 @@ import com.example.canopomersergioproyecto1.modelo.Turismo
 import com.example.canopomersergioproyecto1.modelo.Usuario
 
 class Datos {
-    val moto = Moto(250)
+    val moto = Moto(R.string._250cc)
     val turismo = Turismo("Gasolina")
     val patinete = Patinete()
     val usuario = Usuario("Sergio", "Cano","Pomer",

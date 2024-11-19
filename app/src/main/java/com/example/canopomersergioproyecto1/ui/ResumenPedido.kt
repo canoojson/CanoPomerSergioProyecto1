@@ -1,5 +1,6 @@
 package com.example.canopomersergioproyecto1.ui
 
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,7 +39,7 @@ fun ResumenPedido(appUIState: AppUIState, onAceptarPulsado: () -> Unit, modifier
                 fontSize = 20.sp)
         }else if(pedido.vehiculo?.stringResId== R.string.moto){
             Text(
-                stringResource(R.string.cilindrada) + ": " + (pedido.vehiculo as Moto).cilindrada,
+                stringResource(R.string.cilindrada) + ": " + stringResource((pedido.vehiculo as Moto).cilindrada),
                 fontSize = 20.sp)
         }
         Text("GPS: " + if(pedido.Gps) "Sí" else "No",
