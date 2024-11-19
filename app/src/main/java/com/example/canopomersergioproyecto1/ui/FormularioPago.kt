@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -129,9 +129,9 @@ fun FormularioPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
                     } else {
                         // Cuando ya se tienen al menos 4 dígitos (MMYY)
                         val mes = digits.substring(0, 2).toIntOrNull()
-                        val año = digits.substring(2).toIntOrNull()
+                        val anio = digits.substring(2).toIntOrNull()
 
-                        if (mes != null && año != null && mes in 1..12) {
+                        if (mes != null && anio != null && mes in 1..12) {
                             errorfecha = false
                         } else {
                             errorfecha = true
@@ -176,7 +176,16 @@ fun FormularioPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
                 if (!errorfecha && !errorCVC && !errorNumTarjeta && numeroTarjeta!="" && fechaCaducidad!="" && cvc!="" && numeroTarjeta.length==16 && fechaCaducidad.length==4 && cvc.length==3){
                     onAceptarPulsado(pedido!!)
                 }else{
-                    Toast.makeText(contexto, "Datos incorrectos o no ", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(contexto, "Datos incorrectos o no introducidos ", Toast.LENGTH_SHORT).show()
+                    if(numeroTarjeta!=""){
+                        errorNumTarjeta=true
+                    }
+                    if(fechaCaducidad!=""){
+                        errorfecha=true
+                    }
+                    if(cvc!=""){
+                        errorCVC=true
+                    }
                 }
             },
                 modifier = Modifier.padding(end = 32.dp)) {

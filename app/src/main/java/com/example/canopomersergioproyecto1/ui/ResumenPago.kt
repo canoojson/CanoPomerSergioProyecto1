@@ -86,17 +86,39 @@ fun ResumenPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit){
                     R.string.coche_de_turismo ->
                         putExtra(Intent.EXTRA_TEXT, stringResource(R.string.vehiculo) + ": " + stringResource(R.string.coche_de_turismo)
                         + "\n" + stringResource(R.string.combustible) + ": " + (vehiculo as Turismo).combustible + "\n"
-                        + stringResource(R.string.gps) + ": " + if(pedido.Gps){ "Sí" + "         5€/" + stringResource(R.string.dia) }else{ "No" } + "\n" + stringResource(R.string.dias_de_alquiler) + pedido.tiempoAlquiler.toString()
-                                + "         25€/dia"+ "\n" + stringResource(R.string.precio_total)+ (pedido.precio) + "€")
+                        + stringResource(R.string.gps) + ": " +
+                                if(pedido.Gps){
+                                    "Sí" + "         5€/" + stringResource(R.string.dia)
+                                }else{
+                                    "No"
+                                } + "\n" + stringResource(R.string.dias_de_alquiler) + pedido.tiempoAlquiler.toString()
+                                + if(vehiculo.combustible==stringResource(R.string.el_ctrico)) {
+                                    "         15€/dia"
+                                }else if(vehiculo.combustible==stringResource(R.string.gasolina)){
+                                    "       20€/dia"
+                                }else{
+                                    "       25€/dia"
+                                }+ "\n" + stringResource(R.string.precio_total)+ (pedido.precio) + "€")
                     R.string.moto ->
                         putExtra(Intent.EXTRA_TEXT, stringResource(R.string.vehiculo) + ": " + stringResource(R.string.moto)
                             + "\n" + stringResource(R.string.cilindrada) + ": " + stringResource((pedido.vehiculo as Moto).cilindrada) + "\n"
-                            + stringResource(R.string.gps) + ": " + if(pedido.Gps){ "Sí" + "         5€/" + stringResource(R.string.dia) }else{ "No"} + "\n" + stringResource(R.string.dias_de_alquiler) + pedido.tiempoAlquiler.toString()
-                            + "         15€/dia"+ "\n" + stringResource(R.string.precio_total)+ (pedido.precio) + "€")
+                            + stringResource(R.string.gps) + ": " +
+                                if(pedido.Gps){
+                                "Sí" + "         5€/" + stringResource(R.string.dia)
+                            }else{
+                                "No"
+                            } + "\n" + stringResource(R.string.dias_de_alquiler) + pedido.tiempoAlquiler.toString()
+                            + if((pedido.vehiculo as Moto).cilindrada==R.string._250cc){
+                                "         20€/dia"
+                            }else if((pedido.vehiculo as Moto).cilindrada==R.string._125cc){
+                                "       15€/dia"
+                            }else{
+                                "         10€/dia"
+                            } + "\n" + stringResource(R.string.precio_total)+ (pedido.precio) + "€")
                     R.string.scooter_electrico ->
                         putExtra(Intent.EXTRA_TEXT, stringResource(R.string.vehiculo) + ": " + stringResource(R.string.scooter_electrico) + "\n"
                                 + stringResource(R.string.gps) + ": " + if(pedido.Gps){ "Sí" + "         5€/" + stringResource(R.string.dia) }else{ "No"} + "\n" + stringResource(R.string.dias_de_alquiler) + pedido.tiempoAlquiler.toString()
-                                + "         10€/dia"+ "\n" + stringResource(R.string.precio_total)+ (pedido.precio) + "€")
+                                + "         5€/dia"+ "\n" + stringResource(R.string.precio_total)+ (pedido.precio) + "€")
                 }
 
             }
