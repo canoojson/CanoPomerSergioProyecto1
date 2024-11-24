@@ -177,13 +177,13 @@ fun FormularioPago(appUIState: AppUIState, onAceptarPulsado: (Pedido) -> Unit, m
                     onAceptarPulsado(pedido!!)
                 }else{
                     Toast.makeText(contexto, "Datos incorrectos o no introducidos ", Toast.LENGTH_SHORT).show()
-                    if(numeroTarjeta!=""){
+                    if(numeroTarjeta==""){
                         errorNumTarjeta=true
                     }
-                    if(fechaCaducidad!=""){
+                    if(fechaCaducidad==""){
                         errorfecha=true
                     }
-                    if(cvc!=""){
+                    if(cvc==""){
                         errorCVC=true
                     }
                 }

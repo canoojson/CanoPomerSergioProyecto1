@@ -11,9 +11,9 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.canopomersergioproyecto1.R
 import com.example.canopomersergioproyecto1.datos.Datos
-import com.example.canopomersergioproyecto1.modelo.AppUIState
 import com.example.canopomersergioproyecto1.modelo.Moto
 import com.example.canopomersergioproyecto1.modelo.Patinete
 import com.example.canopomersergioproyecto1.modelo.Pedido
@@ -61,6 +60,8 @@ fun RealizarPedido(onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modi
     var vehiculo : Vehiculo
 
     var pedido : Pedido
+
+    var errorDias by remember { mutableStateOf(false) }
 
 
     Column(modifier = Modifier
@@ -161,7 +162,7 @@ fun RealizarPedido(onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modi
             stringResource(R.string.dias_de_alquiler),
             fontSize = 20.sp,
             modifier = modifier.padding(top = 20.dp))
-        TextField(
+        OutlinedTextField(
             value = diasAlquiler,
             onValueChange = {input ->
                 val digits = input.filter { it.isDigit() }
@@ -169,7 +170,8 @@ fun RealizarPedido(onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modi
             },
             label = { Text(text = stringResource(R.string.dias_de_alquiler))},
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            isError = errorDias
         )
         if (diasAlquiler.isNotEmpty()){
             precio *= diasAlquiler.toInt()
@@ -190,7 +192,10 @@ fun RealizarPedido(onAceptarPulsado: (Pedido) -> Unit, modifier: Modifier = Modi
                 if(diasAlquiler.isNotEmpty()){
                     pedido = Pedido(vehiculo, usuario, null, GPS, diasAlquiler.toInt(), precio)
                     onAceptarPulsado(pedido)
-                } },
+                }else{
+                    errorDias = true
+                }
+                },
                 modifier = modifier) {
                 Text(stringResource(R.string.aceptar),
                     fontSize = 20.sp)
